@@ -4,7 +4,7 @@
 # next check names the broken release and skips it. Continues from
 # golden-path.yaml, which left the app on the release it returns to; the
 # runner releases the broken build and passes its number and label. By hand,
-# release a build whose root component renders nothing and run
+# release a build whose root suspends forever and run
 # `maestro test -e BROKEN_RELEASE_NUMBER=2 -e BROKEN_VERSION=v3 -e EXPECTED_RELEASE_NUMBER=1 -e EXPECTED_VERSION=v2 maestro/rollback.yaml`.
 # No `env:` header: Maestro defines it after the `-e` parameters, so its
 # values would override them.
@@ -30,7 +30,7 @@ appId: com.hotcodepush.demo.reactnative
 - assertVisible: '(UPDATED|UP_TO_DATE).*'
 - stopApp
 - launchApp
-# The broken release renders nothing, since the first rendered frame is the
+# The broken release mounts nothing, since the first rendered frame is the
 # readiness signal: the screen stays empty until the gate times out and the
 # rollback reloads the release before.
 - extendedWaitUntil:
