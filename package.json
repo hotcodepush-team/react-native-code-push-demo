@@ -1,0 +1,38 @@
+{
+  "name": "react-native-code-push-demo",
+  "version": "0.0.0",
+  "private": true,
+  "description": "The HotCodePush React Native code push demo app",
+  "license": "MIT",
+  "scripts": {
+    "android": "react-native run-android",
+    "fmt": "prettier --write .",
+    "ios": "react-native run-ios",
+    "lint": "prettier --check .",
+    "start": "react-native start",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@hotcodepush/react-native-code-push": "https://pkg.pr.new/hotcodepush-team/react-native-code-push/@hotcodepush/react-native-code-push@b10f290",
+    "react": "19.1.1",
+    "react-native": "0.82.1"
+  },
+  "devDependencies": {
+    "@babel/core": "7.28.5",
+    "@babel/preset-env": "7.28.5",
+    "@babel/runtime": "7.28.4",
+    "@react-native-community/cli": "20.0.0",
+    "@react-native-community/cli-platform-android": "20.0.0",
+    "@react-native-community/cli-platform-ios": "20.0.0",
+    "@react-native/babel-preset": "0.82.1",
+    "@react-native/metro-config": "0.82.1",
+    "@react-native/typescript-config": "0.82.1",
+    "@types/react": "19.1.17",
+    "hotcodepush": "https://pkg.pr.new/hotcodepush-team/cli/hotcodepush@b37db25",
+    "prettier": "3.9.8",
+    "typescript": "5.9.3"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}
