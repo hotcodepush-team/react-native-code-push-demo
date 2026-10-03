@@ -32,7 +32,7 @@ npm run typecheck   # TypeScript
 npm start           # Metro, for a debug build
 ```
 
-The flows in `maestro/` are the update lifecycle contract the monorepo's `e2e/` runner drives on the simulator and the emulator — the golden path, the broken release that rolls back, the revoke and the incompatible release; by hand, install a release build, release `v2` with the CLI, then `maestro test -e EXPECTED_VERSION=v2 -e EXPECTED_RELEASE_NUMBER=1 maestro/golden-path.yaml`.
+The flows in `maestro/` are the update lifecycle contract the monorepo's `e2e/` runner drives on the simulator and the emulator — the golden path, the broken release that rolls back, the revoke, the incompatible release, the debug screen whose shared report names that skip's code, and the signed release on a build that carries the app's public key; by hand, install a release build, release `v2` with the CLI, then `maestro test -e EXPECTED_VERSION=v2 -e EXPECTED_RELEASE_NUMBER=1 maestro/golden-path.yaml`.
 
 ## License
 
