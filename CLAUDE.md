@@ -32,10 +32,10 @@ The native builds: `pod install` in `ios/`, then `xcodebuild -workspace ios/HotC
 Everything `npx hotcodepush init` adds to a React Native project is committed here as it adds it:
 
 - `ios/HotCodePushDemo/AppDelegate.swift` returns `HotCodePush.bundleURL()` in release builds, and `android/.../MainApplication.kt` imports the SDK's `getDefaultReactHost`: React Native runs the bundle the SDK serves.
-- The Xcode phase "Embed HotCodePush", after "Bundle React Native code and images", and the `apply from` line at the end of `android/app/build.gradle` run the CLI's `bundle embed` on what the build bundled.
+- The Xcode phase "Create HotCodePush binary", after "Bundle React Native code and images", and the `apply from` line at the end of `android/app/build.gradle` run the CLI's `binary create` on what the build bundled.
 - `ios/Podfile` pins `HotCodePushProtocol` at the commit the SDK names.
 
-`bundle embed` writes `hotcodepush.json` into the app — the project's file plus `builtAt`, `fingerprint`, `embeddedBundleManifest` and `embeddedBundleId` — and registers the store build's binary; it needs a login or `HOTCODEPUSH_TOKEN`.
+`binary create` writes `hotcodepush.json` into the app — the project's file plus `builtAt`, `fingerprint`, `embeddedBundleManifest` and `embeddedBundleId` — and creates the store build's binary; it needs a login or `HOTCODEPUSH_TOKEN`, and without one, or with `HOTCODEPUSH_OFFLINE=1`, the build names no channel and takes no updates.
 A debug build bundles nothing on the simulator and asks Metro for its JavaScript, so nothing is embedded and live updates are off; the device test and a first try of an update use release builds.
 `HOTCODEPUSH_FILES_BASE_URL` and `HOTCODEPUSH_UPDATES_BASE_URL` point the SDK at another host, the local stack or staging.
 

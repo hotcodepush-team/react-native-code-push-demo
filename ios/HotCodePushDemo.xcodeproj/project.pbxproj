@@ -110,7 +110,7 @@
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				BCD2B961AA014E12B2E870DD /* Embed HotCodePush */,
+				BCD2B961AA014E12B2E870DD /* Create HotCodePush binary */,
 				00EEFC60759A1932668264C0 /* [CP] Embed Pods Frameworks */,
 				E235C05ADACE081382539298 /* [CP] Copy Pods Resources */,
 			);
@@ -201,19 +201,19 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-HotCodePushDemo/Pods-HotCodePushDemo-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		BCD2B961AA014E12B2E870DD /* Embed HotCodePush */ = {
+		BCD2B961AA014E12B2E870DD /* Create HotCodePush binary */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Embed HotCodePush";
+			name = "Create HotCodePush binary";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "set -e\n\n# hotcodepush: writes hotcodepush.json into the app and registers the binary\nWITH_ENVIRONMENT=\"$REACT_NATIVE_PATH/scripts/xcode/with-environment.sh\"\nHOTCODEPUSH_EMBED=\"$REACT_NATIVE_PATH/../@hotcodepush/react-native-code-push/scripts/embed-xcode.sh\"\n\n/bin/sh -c \"$WITH_ENVIRONMENT $HOTCODEPUSH_EMBED\"\n";
+			shellScript = "set -e\n\n# hotcodepush: writes hotcodepush.json into the app and registers the binary\nWITH_ENVIRONMENT=\"$REACT_NATIVE_PATH/scripts/xcode/with-environment.sh\"\nHOTCODEPUSH_BINARY_CREATE=\"$REACT_NATIVE_PATH/../@hotcodepush/react-native-code-push/scripts/binary-create-xcode.sh\"\n\n/bin/sh -c \"$WITH_ENVIRONMENT $HOTCODEPUSH_BINARY_CREATE\"\n";
 		};
 		C38B50BA6285516D6DCD4F65 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;

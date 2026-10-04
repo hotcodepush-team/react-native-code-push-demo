@@ -13,7 +13,7 @@ env:
   JAVA_VERSION: 21
 
 # Debug builds: they compile both native projects with the SDK and need no credential, since a debug build asks
-# Metro for its JavaScript and embeds nothing. The release builds, whose embed step registers the binary, are the
+# Metro for its JavaScript and embeds nothing. The release builds, whose build step creates the binary, are the
 # device test's, in the monorepo.
 jobs:
   javascript:
