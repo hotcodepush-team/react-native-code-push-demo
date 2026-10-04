@@ -1711,7 +1711,7 @@ PODS:
 DEPENDENCIES:
   - FBLazyVector (from `../node_modules/react-native/Libraries/FBLazyVector`)
   - hermes-engine (from `../node_modules/react-native/sdks/hermes-engine/hermes-engine.podspec`)
-  - HotCodePushProtocol (from `https://github.com/hotcodepush-team/protocol-ios.git`, commit `f16d46b73be943bba63bfcc659670f34665f89fc`)
+  - HotCodePushProtocol (from `https://github.com/hotcodepush-team/protocol-ios.git`, commit `dd6236e8bd4b3ada72cec9858489e889c2f981f7`)
   - "HotcodepushReactNativeCodePush (from `../node_modules/@hotcodepush/react-native-code-push`)"
   - RCTDeprecation (from `../node_modules/react-native/ReactApple/Libraries/RCTFoundation/RCTDeprecation`)
   - RCTRequired (from `../node_modules/react-native/Libraries/Required`)
@@ -1789,7 +1789,7 @@ EXTERNAL SOURCES:
     :podspec: "../node_modules/react-native/sdks/hermes-engine/hermes-engine.podspec"
     :tag: hermes-2025-09-01-RNv0.82.0-265ef62ff3eb7289d17e366664ac0da82303e101
   HotCodePushProtocol:
-    :commit: f16d46b73be943bba63bfcc659670f34665f89fc
+    :commit: dd6236e8bd4b3ada72cec9858489e889c2f981f7
     :git: https://github.com/hotcodepush-team/protocol-ios.git
   HotcodepushReactNativeCodePush:
     :path: "../node_modules/@hotcodepush/react-native-code-push"
@@ -1930,13 +1930,13 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   HotCodePushProtocol:
-    :commit: f16d46b73be943bba63bfcc659670f34665f89fc
+    :commit: dd6236e8bd4b3ada72cec9858489e889c2f981f7
     :git: https://github.com/hotcodepush-team/protocol-ios.git
 
 SPEC CHECKSUMS:
   FBLazyVector: 2e5b5553df729e080483373db6f045201ff4e6db
   hermes-engine: 273e30e7fb618279934b0b95ffab60ecedb7acf5
-  HotCodePushProtocol: 3f461107b747bf00bb82bd5f0cbb056bba034d4d
+  HotCodePushProtocol: 1513efa6095c08129f91790a9d20f43c52735def
   HotcodepushReactNativeCodePush: 5dc02ca8c8a3250f330048cc071fccb8bd7c8fd2
   RCTDeprecation: c6b36da89aa26090c8684d29c2868dcca2cd4554
   RCTRequired: 1413a0844770d00fa1f1bb2da4680adfa8698065
@@ -2006,6 +2006,6 @@ SPEC CHECKSUMS:
   ReactNativeDependencies: bf28df18cc29efa26b3f96b9c22d8b846047563f
   Yoga: 9a5a710cf47e32646c6d4689c74ce4c17f13ccdb
 
-PODFILE CHECKSUM: 0b972301262f166e7299824ac1923a23f6b29dc2
+PODFILE CHECKSUM: ebbb122e4a218dac65015444002d40c3a20f59e9
 
 COCOAPODS: 1.16.2
