@@ -13,8 +13,8 @@ env:
   JAVA_VERSION: 21
 
 # Debug builds: they compile both native projects with the SDK and need no credential, since a debug build asks
-# Metro for its JavaScript and embeds nothing. The release builds, whose build step creates the binary, are the
-# device test's, in the monorepo.
+# Metro for its JavaScript and embeds nothing, and HOTCODEPUSH_OFFLINE keeps the build step from asking the API.
+# The release builds, whose build step creates the binary, are the device test's, in the monorepo.
 jobs:
   javascript:
     name: Check the JavaScript
@@ -31,6 +31,8 @@ jobs:
   android:
     name: Build the Android debug app
     runs-on: ubuntu-latest
+    env:
+      HOTCODEPUSH_OFFLINE: '1'
     steps:
       - uses: actions/checkout@v7
       - uses: actions/setup-node@v6
@@ -48,6 +50,8 @@ jobs:
   ios:
     name: Build the iOS simulator app
     runs-on: macos-latest
+    env:
+      HOTCODEPUSH_OFFLINE: '1'
     steps:
       - uses: actions/checkout@v7
       - uses: maxim-lobanov/setup-xcode@v1
