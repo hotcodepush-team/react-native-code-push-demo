@@ -1711,7 +1711,7 @@ PODS:
 DEPENDENCIES:
   - FBLazyVector (from `../node_modules/react-native/Libraries/FBLazyVector`)
   - hermes-engine (from `../node_modules/react-native/sdks/hermes-engine/hermes-engine.podspec`)
-  - HotCodePushProtocol (from `https://github.com/hotcodepush-team/protocol-ios.git`, commit `457635bfb1d248af8a87df374a4694f43e8253f9`)
+  - HotCodePushProtocol (from `https://github.com/hotcodepush-team/protocol-ios.git`, commit `f16d46b73be943bba63bfcc659670f34665f89fc`)
   - "HotcodepushReactNativeCodePush (from `../node_modules/@hotcodepush/react-native-code-push`)"
   - RCTDeprecation (from `../node_modules/react-native/ReactApple/Libraries/RCTFoundation/RCTDeprecation`)
   - RCTRequired (from `../node_modules/react-native/Libraries/Required`)
@@ -1789,7 +1789,7 @@ EXTERNAL SOURCES:
     :podspec: "../node_modules/react-native/sdks/hermes-engine/hermes-engine.podspec"
     :tag: hermes-2025-09-01-RNv0.82.0-265ef62ff3eb7289d17e366664ac0da82303e101
   HotCodePushProtocol:
-    :commit: 457635bfb1d248af8a87df374a4694f43e8253f9
+    :commit: f16d46b73be943bba63bfcc659670f34665f89fc
     :git: https://github.com/hotcodepush-team/protocol-ios.git
   HotcodepushReactNativeCodePush:
     :path: "../node_modules/@hotcodepush/react-native-code-push"
@@ -1930,7 +1930,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   HotCodePushProtocol:
-    :commit: 457635bfb1d248af8a87df374a4694f43e8253f9
+    :commit: f16d46b73be943bba63bfcc659670f34665f89fc
     :git: https://github.com/hotcodepush-team/protocol-ios.git
 
 SPEC CHECKSUMS:
@@ -2006,6 +2006,6 @@ SPEC CHECKSUMS:
   ReactNativeDependencies: bf28df18cc29efa26b3f96b9c22d8b846047563f
   Yoga: 9a5a710cf47e32646c6d4689c74ce4c17f13ccdb
 
-PODFILE CHECKSUM: 8246182cb05b79e8ddce53103847f043bce0d6d6
+PODFILE CHECKSUM: 0b972301262f166e7299824ac1923a23f6b29dc2
 
 COCOAPODS: 1.16.2
