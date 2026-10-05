@@ -20,7 +20,7 @@ end
 
 target 'HotCodePushDemo' do
   config = use_native_modules!
-  pod 'HotCodePushProtocol', :git => 'https://github.com/hotcodepush-team/protocol-ios.git', :commit => '42ceec4cd4bd1613128d0305995657c88d4d4432'
+  pod 'HotCodePushProtocol', :git => 'https://github.com/hotcodepush-team/protocol-ios.git', :commit => 'd2d70f1fc4ecade23506af946caa514f2f287a72'
 
   use_react_native!(
     :path => config[:reactNativePath],
