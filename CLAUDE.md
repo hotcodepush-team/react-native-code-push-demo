@@ -33,13 +33,13 @@ Everything `npx hotcodepush init` adds to a React Native project is committed he
 
 - `ios/HotCodePushDemo/AppDelegate.swift` returns `HotCodePush.bundleURL()` in release builds, and `android/.../MainApplication.kt` imports the SDK's `getDefaultReactHost`: React Native runs the bundle the SDK serves.
 - The Xcode phase "Create HotCodePush binary", after "Bundle React Native code and images", and the `apply from` line at the end of `android/app/build.gradle` run the CLI's `binary create` on what the build bundled.
-- `ios/Podfile` pins `HotCodePushProtocol` at the commit the SDK names.
+- `ios/Podfile` pins `HotCodePushCore` at the commit the SDK names.
 
 `binary create` writes `hotcodepush.json` into the app — the project's file plus `builtAt`, `fingerprint`, `embeddedBundleManifest` and `embeddedBundleId` — and creates the store build's binary; it needs a login or `HOTCODEPUSH_TOKEN`, and without one, or with `HOTCODEPUSH_OFFLINE=1`, the build names no channel and takes no updates.
 A debug build bundles nothing on the simulator and asks Metro for its JavaScript, so nothing is embedded and live updates are off; the device test and a first try of an update use release builds.
 `HOTCODEPUSH_FILES_BASE_URL` and `HOTCODEPUSH_UPDATES_BASE_URL` point the SDK at another host, the local stack or staging.
 
-`ios/Podfile` takes React Native's prebuilt core and dependencies, so a clean iOS build is a minute instead of a quarter of an hour, and carries one workaround for Xcode 27, explained beside it: the resource bundle of `HotCodePushProtocol` follows the app's iOS floor.
+`ios/Podfile` takes React Native's prebuilt core and dependencies, so a clean iOS build is a minute instead of a quarter of an hour.
 The Android manifest permits cleartext to `10.0.2.2` and `localhost` alone, and `Info.plist` local networking, for the device test's local stack.
 
 ## Dependencies during the build phase

@@ -20,7 +20,7 @@ end
 
 target 'HotCodePushDemo' do
   config = use_native_modules!
-  pod 'HotCodePushProtocol', :git => 'https://github.com/hotcodepush-team/protocol-ios.git', :commit => 'd2d70f1fc4ecade23506af946caa514f2f287a72'
+  pod 'HotCodePushCore', :git => 'https://github.com/hotcodepush-team/core-ios.git', :commit => 'c9b5266d0780d5e56e4b86c847bc6d5ea5184536'
 
   use_react_native!(
     :path => config[:reactNativePath],
@@ -35,13 +35,5 @@ target 'HotCodePushDemo' do
       :mac_catalyst_enabled => false,
       # :ccache_enabled => true
     )
-    # Xcode 27 builds no simulator target below iOS 15. React Native raises each pod's own target to its floor but not
-    # the resource bundle beside it, and HotCodePushProtocol's carries the core's iOS 13: it follows the app's floor here.
-    installer.pods_project.targets.each do |target|
-      next unless target.name.start_with?('HotCodePushProtocol')
-      target.build_configurations.each do |build_configuration|
-        build_configuration.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = min_ios_version_supported
-      end
-    end
   end
 end
