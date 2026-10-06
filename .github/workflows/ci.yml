@@ -64,4 +64,9 @@ jobs:
       - run: npm ci
       - run: pod install
         working-directory: ios
-      - run: xcodebuild -workspace ios/HotCodePushDemo.xcworkspace -scheme HotCodePushDemo -configuration Debug -destination 'generic/platform=iOS Simulator' CODE_SIGNING_ALLOWED=NO -quiet build
+      - run: |
+          set -o pipefail
+          xcodebuild -workspace ios/HotCodePushDemo.xcworkspace -scheme HotCodePushDemo -configuration Debug -destination 'generic/platform=iOS Simulator' CODE_SIGNING_ALLOWED=NO -quiet build 2>&1 | tee xcodebuild.log
+      # The phase runs on every build and is marked so; unmarked, Xcode warns that it declares no outputs.
+      - name: Check that Xcode does not warn about the Create HotCodePush binary phase
+        run: '! grep "warning: Run script build phase ''Create HotCodePush binary''" xcodebuild.log'

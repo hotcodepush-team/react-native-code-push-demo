@@ -203,6 +203,7 @@
 		};
 		BCD2B961AA014E12B2E870DD /* Create HotCodePush binary */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
