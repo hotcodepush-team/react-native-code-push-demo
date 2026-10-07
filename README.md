@@ -14,7 +14,7 @@ Open `ios/HotCodePushDemo.xcworkspace` in Xcode or `android/` in Android Studio 
 A release build bundles the JavaScript and runs the CLI's `binary create`, the build step, which writes the resource file `hotcodepush.json` into the app and creates the store build's binary with its embedded bundle, so log in first with `npx hotcodepush login` or set `HOTCODEPUSH_TOKEN`.
 Without a token, or with `HOTCODEPUSH_OFFLINE=1`, the build goes on without a channel and takes no updates.
 Point it at another host, the local stack or staging, by setting `HOTCODEPUSH_FILES_BASE_URL` and `HOTCODEPUSH_UPDATES_BASE_URL` for the build.
-A debug build asks Metro for its JavaScript, `npm start`; the build step writes its `hotcodepush.json` without an embedded bundle, so every sync answers `SKIPPED` with `DEBUG_BUILD`.
+A debug build asks Metro for its JavaScript, `npm start`; the build step writes its `hotcodepush.json` without an embedded bundle, so every sync answers `SKIPPED` with `BUILD_DEBUG`.
 
 ## Usage
 
@@ -33,7 +33,7 @@ npm run typecheck   # TypeScript
 npm start           # Metro, for a debug build
 ```
 
-The flows in `maestro/` are the update lifecycle contract the monorepo's `e2e/` runner drives on the simulator and the emulator — the golden path, the broken release that rolls back, the revoke, the incompatible release, the debug screen whose shared report names that skip's code, the release a build that carries a public key refuses, unsigned or signed with a key it does not trust, and the signed release on a build that carries the app's public key, the release whose entry file registers no root, which ends the process and rolls back, and the debug build, whose sync answers `SKIPPED` with `DEBUG_BUILD`; by hand, install a release build, release `v2` with the CLI, then `maestro test -e EXPECTED_VERSION=v2 -e EXPECTED_RELEASE_NUMBER=1 maestro/golden-path.yaml`.
+The flows in `maestro/` are the update lifecycle contract the monorepo's `e2e/` runner drives on the simulator and the emulator — the golden path, the broken release that rolls back, the revoke, the incompatible release, the debug screen whose shared report names that skip's code, the release a build that carries a public key refuses, unsigned or signed with a key it does not trust, and the signed release on a build that carries the app's public key, the release whose entry file registers no root, which ends the process and rolls back, and the debug build, whose sync answers `SKIPPED` with `BUILD_DEBUG`; by hand, install a release build, release `v2` with the CLI, then `maestro test -e EXPECTED_VERSION=v2 -e EXPECTED_RELEASE_NUMBER=1 maestro/golden-path.yaml`.
 
 ## License
 

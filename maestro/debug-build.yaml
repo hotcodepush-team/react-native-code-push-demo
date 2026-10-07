@@ -1,7 +1,7 @@
 # The debug build: Metro serves its JavaScript and the build step wrote
 # hotcodepush.json without an embedded bundle, so the SDK is configured and
 # live updates are off in it: the app runs as embedded and a sync resolves
-# SKIPPED with DEBUG_BUILD. The runner installs the debug build and starts
+# SKIPPED with BUILD_DEBUG. The runner installs the debug build and starts
 # Metro; by hand, `npm start`, then `npx react-native run-ios` or
 # `npx react-native run-android`, and `maestro test maestro/debug-build.yaml`.
 appId: com.hotcodepush.demo.reactnative
@@ -16,4 +16,4 @@ appId: com.hotcodepush.demo.reactnative
 - extendedWaitUntil:
     notVisible: 'syncing…'
     timeout: 60000
-- assertVisible: 'SKIPPED · DEBUG_BUILD'
+- assertVisible: 'SKIPPED · BUILD_DEBUG'
