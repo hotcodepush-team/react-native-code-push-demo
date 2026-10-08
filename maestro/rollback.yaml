@@ -25,9 +25,9 @@ appId: com.hotcodepush.demo.reactnative
       - extendedWaitUntil:
           notVisible: 'syncing…'
           timeout: 60000
-# The check at start may have staged the broken release already; either way
-# the last sync settles on one of the two, and next-start installs it.
-- assertVisible: '(UPDATED|UP_TO_DATE).*'
+# The check at start may have downloaded the broken release already; either
+# way the tap's sync answers DOWNLOADED, and next-start applies it.
+- assertVisible: 'DOWNLOADED · #${BROKEN_RELEASE_NUMBER} · ${BROKEN_VERSION}, applies next-start'
 - stopApp
 - launchApp
 # The broken release mounts nothing, since the first rendered frame is the

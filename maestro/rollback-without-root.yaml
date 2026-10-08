@@ -3,8 +3,8 @@
 # ends the process, on iOS because the release build aborts on start, and the
 # SDK rolls the app back on the next start: APP_CRASHED, the reason seen on
 # iOS and Android. A rollback at the gate, READINESS_TIMED_OUT, is the
-# accepted alternative. In both the rolledBack notice reaches the app, on the
-# reload or on the next start.
+# accepted alternative. In both the updateRolledBack event reaches the app, on
+# the reload or on the next start.
 # Continues from the release the runner left the app on; the runner releases
 # the build and passes its number and label. By hand, release a build whose
 # index.js holds `export {};` alone and run
@@ -28,7 +28,8 @@ appId: com.hotcodepush.demo.reactnative
       - extendedWaitUntil:
           notVisible: 'syncing…'
           timeout: 60000
-- assertVisible: '(UPDATED|UP_TO_DATE).*'
+# Downloaded at the tap or by the check at start; next-start applies it.
+- assertVisible: 'DOWNLOADED · #${BROKEN_RELEASE_NUMBER} · ${BROKEN_VERSION}, applies next-start'
 - stopApp
 - launchApp
 # On iOS Maestro fails the flow when a screen read meets the end of the
