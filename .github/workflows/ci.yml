@@ -14,7 +14,7 @@ env:
 
 # Debug builds: they compile both native projects with the SDK and need no credential, since a debug build asks
 # Metro for its JavaScript and embeds nothing, and HOTCODEPUSH_OFFLINE keeps the build step from asking the API.
-# The release builds, whose build step creates the binary, are the device test's, in the monorepo.
+# The store builds, whose build step creates the binary, are the device test's, in the monorepo.
 jobs:
   javascript:
     name: Check the JavaScript

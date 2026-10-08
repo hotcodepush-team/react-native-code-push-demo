@@ -11,7 +11,7 @@ cd ios && pod install
 ```
 
 Open `ios/HotCodePushDemo.xcworkspace` in Xcode or `android/` in Android Studio and run a release build: `npx react-native run-ios --mode Release` or `npx react-native run-android --mode release`.
-A release build bundles the JavaScript and runs the CLI's `binary create`, the build step, which writes the resource file `hotcodepush.json` into the app and creates the store build's binary with its embedded bundle, so log in first with `npx hotcodepush login` or set `HOTCODEPUSH_TOKEN`.
+Every native build runs the CLI's build step, which writes the resource file `hotcodepush.json` into the app. Only a store build creates the binary with its embedded bundle: an Xcode archive, Product > Archive, or an Android build type other than `debug`, so `run-android --mode release` creates one and `run-ios --mode Release` does not; log in first with `npx hotcodepush login` or set `HOTCODEPUSH_TOKEN`.
 Without a token, or with `HOTCODEPUSH_OFFLINE=1`, the build goes on without a channel and takes no updates.
 Point it at another host, the local stack or staging, by setting `HOTCODEPUSH_FILES_BASE_URL` and `HOTCODEPUSH_UPDATES_BASE_URL` for the build.
 A debug build asks Metro for its JavaScript, `npm start`; the build step writes its `hotcodepush.json` without an embedded bundle, so every sync answers `SKIPPED` with `BUILD_DEBUG`.

@@ -25,18 +25,18 @@ maestro/                     the update lifecycle contract's flows
 | `npm start`         | Metro, for a debug build |
 
 Run `npm run fmt` before every commit.
-The native builds: `pod install` in `ios/`, then `xcodebuild -workspace ios/HotCodePushDemo.xcworkspace -scheme HotCodePushDemo -configuration Release -destination 'generic/platform=iOS Simulator' build`, and `./gradlew assembleRelease` in `android/`.
+The native builds: `pod install` in `ios/`, then `xcodebuild -workspace ios/HotCodePushDemo.xcworkspace -scheme HotCodePushDemo -configuration Release -destination 'generic/platform=iOS Simulator' build`, and `./gradlew assembleRelease` in `android/`; the store build on iOS is the same command with `archive -archivePath <path> CODE_SIGNING_ALLOWED=NO`, the app at `<path>/Products/Applications/HotCodePushDemo.app`.
 
 ## The wiring
 
 Everything `npx hotcodepush init` adds to a React Native project is committed here as it adds it:
 
 - `ios/HotCodePushDemo/AppDelegate.swift` returns `HotCodePush.bundleURL()` in release builds, and `android/.../MainApplication.kt` imports the SDK's `getDefaultReactHost`: React Native runs the bundle the SDK serves.
-- The Xcode phase "Create HotCodePush binary", after "Bundle React Native code and images", and the `apply from` line at the end of `android/app/build.gradle` run the CLI's `binary create` on what the build bundled.
+- The Xcode phase "Create HotCodePush binary", after "Bundle React Native code and images", and the `apply from` line at the end of `android/app/build.gradle` run the CLI's build step on what the build bundled: `binary create` in an Xcode archive or a Gradle build type other than `debug`, `resource-file write` in every other build.
 - `ios/Podfile` pins `HotCodePushCore` at the commit the SDK names.
 
-`binary create` writes `hotcodepush.json` into the app — the project's file plus `builtAt`, `fingerprint`, `embeddedBundleManifest` and `embeddedBundleId` — and creates the store build's binary; it needs a login or `HOTCODEPUSH_TOKEN`, and without one, or with `HOTCODEPUSH_OFFLINE=1`, the build names no channel and takes no updates.
-A debug build bundles nothing and asks Metro for its JavaScript; the build step still writes its `hotcodepush.json`, without an embedded bundle, so every sync answers `SKIPPED` with `BUILD_DEBUG`; the device test and a first try of an update use release builds.
+Both commands write `hotcodepush.json` into the app — the project's file plus `builtAt`, `fingerprint`, `embeddedBundleManifest` and `embeddedBundleId`; only `binary create` creates the store build's binary and versions the embedded manifest, `resource-file write` leaving `bundleVersion` empty and `embeddedBundleId` null. `binary create` needs a login or `HOTCODEPUSH_TOKEN`, and without one, or with `HOTCODEPUSH_OFFLINE=1`, the build names no channel and takes no updates.
+A debug build bundles nothing and asks Metro for its JavaScript; the build step still writes its `hotcodepush.json`, without an embedded bundle, so every sync answers `SKIPPED` with `BUILD_DEBUG`; the device test and a first try of an update use store builds, on iOS an archive, since a Release build creates no binary.
 `HOTCODEPUSH_FILES_BASE_URL` and `HOTCODEPUSH_UPDATES_BASE_URL` point the SDK at another host, the local stack or staging.
 
 `ios/Podfile` takes React Native's prebuilt core and dependencies, so a clean iOS build is a minute instead of a quarter of an hour.
