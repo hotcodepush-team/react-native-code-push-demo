@@ -215,7 +215,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "set -e\n\n# hotcodepush: writes hotcodepush.json into the app and registers the binary\nWITH_ENVIRONMENT=\"$REACT_NATIVE_PATH/scripts/xcode/with-environment.sh\"\nHOTCODEPUSH_BINARY_CREATE=\"$REACT_NATIVE_PATH/../@hotcodepush/react-native-code-push/scripts/binary-create-xcode.sh\"\n\n/bin/sh -c \"$WITH_ENVIRONMENT $HOTCODEPUSH_BINARY_CREATE\"\n";
+			shellScript = "set -e\n\n# hotcodepush: writes hotcodepush.json into the app and, in a store build, creates the binary\nWITH_ENVIRONMENT=\"$REACT_NATIVE_PATH/scripts/xcode/with-environment.sh\"\nHOTCODEPUSH_BINARY_CREATE=\"$REACT_NATIVE_PATH/../@hotcodepush/react-native-code-push/scripts/binary-create-xcode.sh\"\n\n/bin/sh -c \"$WITH_ENVIRONMENT $HOTCODEPUSH_BINARY_CREATE\"\n";
 		};
 		C38B50BA6285516D6DCD4F65 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
