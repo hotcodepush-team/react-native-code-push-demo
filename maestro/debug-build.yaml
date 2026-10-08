@@ -6,7 +6,11 @@
 # `npx react-native run-android`, and `maestro test maestro/debug-build.yaml`.
 appId: com.hotcodepush.demo.reactnative
 ---
-- launchApp
+# Every launch names its permissions: Maestro's default allows all, and its
+# location grant can hang the iOS simulator on Xcode 27 for minutes.
+- launchApp:
+    permissions:
+      notifications: allow
 # The first launch waits for Metro to bundle the JavaScript.
 - extendedWaitUntil:
     visible: 'Sync now'

@@ -7,8 +7,12 @@
 # values would override them.
 appId: com.hotcodepush.demo.reactnative
 ---
+# Every launch names its permissions: Maestro's default allows all, and its
+# location grant can hang the iOS simulator on Xcode 27 for minutes.
 - launchApp:
     clearState: true
+    permissions:
+      notifications: allow
 - assertVisible: 'v1'
 - assertVisible: 'embedded'
 - tapOn: 'Sync now'
@@ -30,7 +34,9 @@ appId: com.hotcodepush.demo.reactnative
 # tap's sync answers DOWNLOADED, and next-start applies it on the relaunch.
 - assertVisible: 'DOWNLOADED · #${EXPECTED_RELEASE_NUMBER} · ${EXPECTED_VERSION}, applies next-start'
 - stopApp
-- launchApp
+- launchApp:
+    permissions:
+      notifications: allow
 - extendedWaitUntil:
     visible: ${EXPECTED_VERSION}
     timeout: 60000

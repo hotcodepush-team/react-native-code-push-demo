@@ -13,7 +13,11 @@
 # values would override them.
 appId: com.hotcodepush.demo.reactnative
 ---
-- launchApp
+# Every launch names its permissions: Maestro's default allows all, and its
+# location grant can hang the iOS simulator on Xcode 27 for minutes.
+- launchApp:
+    permissions:
+      notifications: allow
 - assertVisible: '#${EXPECTED_RELEASE_NUMBER} · ${EXPECTED_VERSION}'
 - tapOn: 'Sync now'
 - extendedWaitUntil:
@@ -31,7 +35,9 @@ appId: com.hotcodepush.demo.reactnative
 # Downloaded at the tap or by the check at start; next-start applies it.
 - assertVisible: 'DOWNLOADED · #${BROKEN_RELEASE_NUMBER} · ${BROKEN_VERSION}, applies next-start'
 - stopApp
-- launchApp
+- launchApp:
+    permissions:
+      notifications: allow
 # On iOS Maestro fails the flow when a screen read meets the end of the
 # process, so the flow lets the broken start end before it reads the screen
 # again, waiting without touching the device: the abort comes about a second
@@ -50,6 +56,8 @@ appId: com.hotcodepush.demo.reactnative
           timeout: 30000
           optional: true
       - launchApp:
+          permissions:
+            notifications: allow
           stopApp: false
 - assertVisible: 'from #${BROKEN_RELEASE_NUMBER} · ${BROKEN_VERSION} · (READINESS_TIMED_OUT|APP_CRASHED)'
 - assertVisible: '#${EXPECTED_RELEASE_NUMBER} · ${EXPECTED_VERSION}'
