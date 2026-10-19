@@ -13,7 +13,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@hotcodepush/react-native-code-push": "https://pkg.pr.new/hotcodepush-team/react-native-code-push/@hotcodepush/react-native-code-push@9e78ee824841423a75d1758956aee8a521bdea40",
+    "@hotcodepush/react-native-code-push": "https://pkg.pr.new/hotcodepush-team/react-native-code-push/@hotcodepush/react-native-code-push@d1f1241cfb88378a729ff90906dd10e70b1e21a2",
     "react": "19.1.1",
     "react-native": "0.82.1"
   },
@@ -28,7 +28,7 @@
     "@react-native/metro-config": "0.82.1",
     "@react-native/typescript-config": "0.82.1",
     "@types/react": "19.1.17",
-    "hotcodepush": "https://pkg.pr.new/hotcodepush-team/cli/hotcodepush@21aaf75bf0f183dc797aa7e78289a3dba8608614",
+    "hotcodepush": "https://pkg.pr.new/hotcodepush-team/cli/hotcodepush@f9ecc45625f3429ab71285b5abf7defeffeb400f",
     "prettier": "3.9.8",
     "typescript": "5.9.3"
   },
