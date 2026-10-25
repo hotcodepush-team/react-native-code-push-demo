@@ -36,7 +36,7 @@ Everything `npx hotcodepush init` adds to a React Native project is committed he
 - `ios/Podfile` pins `HotCodePushCore` at the commit the SDK names.
 
 Both commands write `hotcodepush.json` into the app — the project's file plus `builtAt`, `fingerprint`, `embeddedBundleManifest` and `embeddedBundleId`; only `binary create` creates the store build's binary and versions the embedded manifest, `resource-file write` leaving `bundleVersion` empty and `embeddedBundleId` null. `binary create` needs a login or `HOTCODEPUSH_TOKEN`, and without one, or with `HOTCODEPUSH_OFFLINE=1`, the build names no channel and takes no updates.
-A debug build bundles nothing and asks Metro for its JavaScript; the build step still writes its `hotcodepush.json`, without an embedded bundle, so every sync answers `SKIPPED` with `BUILD_DEBUG`; the device test and a first try of an update use store builds, on iOS an archive, since a Release build creates no binary.
+A debug build bundles nothing and asks Metro for its JavaScript; the build step still writes its `hotcodepush.json`, without an embedded bundle, so every sync answers `skipped` with `build_debug`; the device test and a first try of an update use store builds, on iOS an archive, since a Release build creates no binary.
 `HOTCODEPUSH_FILES_BASE_URL` and `HOTCODEPUSH_UPDATES_BASE_URL` point the SDK at another host, the local stack or staging.
 
 `ios/Podfile` takes React Native's prebuilt core and dependencies, so a clean iOS build is a minute instead of a quarter of an hour.
