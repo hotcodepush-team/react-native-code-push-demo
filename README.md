@@ -2,38 +2,41 @@
 
 The demo app for [React Native code push](https://hotcodepush.com/react-native-code-push) with `@hotcodepush/react-native-code-push`: one screen showing the bundle version, the current release, the device id, the last sync and the last rollback, a button that syncs now and one that opens the debug screen.
 
-## Installation
+## Getting started
 
 ```sh
 nvm use
 npm ci
-cd ios && pod install
+npx hotcodepush login
+cd ios && pod install && cd ..
+npx react-native run-ios --mode Release       # or: npx react-native run-android --mode release
 ```
 
-Open `ios/HotCodePushDemo.xcworkspace` in Xcode or `android/` in Android Studio and run a release build: `npx react-native run-ios --mode Release` or `npx react-native run-android --mode release`.
-Every native build runs the CLI's build step, which writes the resource file `hotcodepush.json` into the app. Only a store build creates the binary with its embedded bundle: an Xcode archive, Product > Archive, or an Android build type other than `debug`, so `run-android --mode release` creates one and `run-ios --mode Release` does not; log in first with `npx hotcodepush login` or set `HOTCODEPUSH_TOKEN`.
-Without a token, or with `HOTCODEPUSH_OFFLINE=1`, the build goes on without a channel and takes no updates.
-Point it at another host, the local stack or staging, by setting `HOTCODEPUSH_FILES_BASE_URL` and `HOTCODEPUSH_UPDATES_BASE_URL` for the build.
-A debug build asks Metro for its JavaScript, `npm start`; the build step writes its `hotcodepush.json` without an embedded bundle, so every sync answers `skipped` with `build_debug`.
+OTA updates are off in a debug build, where Metro serves the JavaScript, so run a release build.
+Every native build runs the CLI's build step, which writes `hotcodepush.json` into the app; an Xcode archive or an Android non-debug build also registers the store build in HotCodePush.
+Without a login the file names no channel and the app takes no updates.
+Set `HOTCODEPUSH_FILES_BASE_URL` and `HOTCODEPUSH_UPDATES_BASE_URL` for the build to point it at the local stack or staging.
 
 ## Usage
 
 Run the app once: it shows `v1` and the current release `embedded`.
 Change `VERSION` in `App.tsx`, release with `npx hotcodepush release create`, which bundles each platform itself, and reopen the app to see the new label.
 
-## Documentation
-
-The SDK reference is at [hotcodepush.com/docs/react-native](https://hotcodepush.com/docs/react-native).
-
 ## Development
 
 ```sh
-npm run lint        # Prettier
-npm run typecheck   # TypeScript
 npm start           # Metro, for a debug build
+npm run lint && npm run typecheck
+npm run fmt         # run before every commit
 ```
 
-The flows in `maestro/` are the update lifecycle contract the monorepo's `e2e/` runner drives on the simulator and the emulator — the golden path, the broken release that rolls back, the revoke, the incompatible release, the debug screen whose shared report names that skip's code, the release a build that carries a public key refuses, unsigned or signed with a key it does not trust, and the signed release on a build that carries the app's public key, the release whose entry file registers no root, which ends the process and rolls back, and the debug build, whose sync answers `skipped` with `build_debug`; by hand, install a release build, release `v2` with the CLI, then `maestro test -e EXPECTED_VERSION=v2 -e EXPECTED_RELEASE_NUMBER=1 maestro/golden-path.yaml`.
+The flows in `maestro/` are the update lifecycle contract the monorepo's `e2e/` runner drives on the simulator and the emulator; each flow's header names what it expects.
+By hand: install a release build, release `v2`, then `maestro test -e EXPECTED_VERSION=v2 -e EXPECTED_RELEASE_NUMBER=1 maestro/golden-path.yaml`.
+`CLAUDE.md` holds the native build commands and the wiring `npx hotcodepush init` adds.
+
+## Documentation
+
+See [hotcodepush.com/docs/react-native](https://hotcodepush.com/docs/react-native).
 
 ## License
 
