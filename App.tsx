@@ -3,7 +3,7 @@ import type { Release, SyncResult } from '@hotcodepush/react-native-code-push';
 import { useCallback, useEffect, useState } from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 
-// Change it, release: the label is how you see the update land.
+// Change this label and release it to see the update land on the device.
 const VERSION = 'v1';
 
 export default function App() {
@@ -17,7 +17,7 @@ export default function App() {
       device => setDeviceId(device.id),
       error => setDeviceId(resolveErrorText(error)),
     );
-    // Fired once, on the start that follows a rollback: the release that failed and why.
+    // The SDK fires this once, on the first start after a rollback.
     const listening = HotCodePush.addListener('updateRolledBack', event =>
       setRollbackText(
         `from ${resolveReleaseText(event.fromRelease)} · ${event.reason}`,
