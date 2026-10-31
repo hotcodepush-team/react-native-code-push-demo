@@ -1,13 +1,9 @@
-# The debug build: Metro serves its JavaScript and the build step wrote
-# hotcodepush.json without an embedded bundle, so the SDK is configured and
-# over-the-air (OTA) updates are off in it: the app runs as embedded and a sync
-# resolves `skipped` with `build_debug`. The runner installs the debug build and
-# starts Metro; by hand, `npm start`, then `npx react-native run-ios` or
-# `npx react-native run-android`, and `maestro test maestro/debug-build.yaml`.
+# The debug build embeds no bundle and loads its JavaScript from Metro.
+# A sync therefore skips with `build_debug`.
+# By hand, run `npm start`, then `npx react-native run-ios` or `npx react-native run-android`, then
+# `maestro test maestro/debug-build.yaml`.
 appId: com.hotcodepush.demo.reactnative
 ---
-# Every launch names its permissions: Maestro's default allows all, and its
-# location grant can hang the iOS simulator on Xcode 27 for minutes.
 - launchApp:
     permissions:
       notifications: allow
