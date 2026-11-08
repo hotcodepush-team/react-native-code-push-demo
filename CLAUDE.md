@@ -11,7 +11,7 @@ When code and plan disagree, stop and surface it; never improvise.
 
 ```
 App.tsx, index.js            the one screen and the entry file
-hotcodepush.json             the project's configuration, as `init` writes it; placeholder ids until the app is created
+hotcodepush.json             the project's configuration, as `init` writes it; it names the demo's own app in the HotCodePush organization on production
 ios/, android/               the native projects, committed, wired as `init` wires them
 maestro/                     the update lifecycle contract's flows
 ```
@@ -44,7 +44,7 @@ The Android manifest permits cleartext to `10.0.2.2` and `localhost` alone, and 
 ## Dependencies during the build phase
 
 The SDK is pinned to the pkg.pr.new build of one commit, `https://pkg.pr.new/hotcodepush-team/react-native-code-push/@hotcodepush/react-native-code-push@<sha>`, never `@main`; a bump is one edit of that sha, and the SDK's pod carries the iOS core.
-The CLI is pinned the same way, `https://pkg.pr.new/hotcodepush-team/cli/hotcodepush@<sha>`.
+The CLI is pinned to an exact npm release in `devDependencies`, and the release workflow reads that pin as `cli-version`, so one bump moves the native builds and the release together.
 Every other dependency is pinned to an exact version and bumped by Renovate.
 
 ## Comments
