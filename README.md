@@ -20,7 +20,7 @@ Set `HOTCODEPUSH_FILES_BASE_URL` and `HOTCODEPUSH_UPDATES_BASE_URL` for the buil
 ## Usage
 
 Run the app once: it shows `v1` and the current release `embedded`.
-Change `VERSION` in `App.tsx`, release with `npx hotcodepush release create`, which bundles each platform itself, and reopen the app to see the new label.
+Change `VERSION` in `App.tsx`, release with `npx hotcodepush release create --platform ios` or `--platform android`, which bundles that platform itself, and reopen the app to see the new label.
 
 ## Development
 
