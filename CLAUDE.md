@@ -43,7 +43,7 @@ The Android manifest permits cleartext to `10.0.2.2` and `localhost` alone, and 
 
 ## Dependencies during the build phase
 
-The SDK is pinned to the pkg.pr.new build of one commit, `https://pkg.pr.new/hotcodepush-team/react-native-code-push/@hotcodepush/react-native-code-push@<sha>`, never `@main`; a bump is one edit of that sha, and the SDK's pod carries the iOS core.
+The SDK is pinned to its published release, `0.1.0`, bumped by hand when the SDK releases, and the SDK's pod carries the iOS core.
 The CLI is pinned to an exact npm release in `devDependencies`, and the release workflow reads that pin as `cli-version`, so one bump moves the native builds and the release together.
 Every other dependency is pinned to an exact version and bumped by Renovate.
 
