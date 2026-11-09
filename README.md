@@ -11,7 +11,7 @@ A React Native app with [`@hotcodepush/react-native-code-push`](https://github.c
 
 ## Download
 
-The [downloads release](https://github.com/hotcodepush-team/react-native-code-push-demo/releases/tag/downloads) carries the app for Android and for the iOS simulator. Every merge to `main` rebuilds both, with the label `v1`, before it ships the update.
+The [newest release](https://github.com/hotcodepush-team/react-native-code-push-demo/releases/latest) carries the app for Android and for the iOS simulator. Every merge to `main` builds both, with the label `v1`, as a new release before it ships the update.
 
 ```sh
 # Android, on a device or an emulator

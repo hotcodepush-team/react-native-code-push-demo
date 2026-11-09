@@ -27,7 +27,7 @@ maestro/                     the update lifecycle contract's flows
 Run `npm run fmt` before every commit.
 The native builds: `pod install` in `ios/`, then `xcodebuild -workspace ios/HotCodePushDemo.xcworkspace -scheme HotCodePushDemo -configuration Release -destination 'generic/platform=iOS Simulator' build`, and `./gradlew assembleRelease` in `android/`; the store build on iOS is the same command with `archive -archivePath <path> CODE_SIGNING_ALLOWED=NO`, the app at `<path>/Products/Applications/HotCodePushDemo.app`.
 
-`release.yml` builds the downloads on every merge to `main` with `HOTCODEPUSH_TOKEN`, the Android release APK and the iOS simulator archive, stamps their label `v1` and publishes them as the rolling GitHub release `downloads`.
+`release.yml` builds the downloads on every merge to `main` with `HOTCODEPUSH_TOKEN`, the Android release APK and the iOS simulator archive, stamps their label `v1` and publishes them as the GitHub release `build/<run number>`, the newest marked latest,.
 It ships the OTA release after them, so a download always takes the newest release and shows the label on `main`.
 
 ## The wiring
