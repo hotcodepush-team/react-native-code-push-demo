@@ -1,6 +1,6 @@
 # CLAUDE.md
 
-The HotCodePush React Native demo: a minimal React Native 0.82 app on `@hotcodepush/react-native-code-push`, the app that receives every update, the SDK's device test and the docs' screenshots.
+The HotCodePush React Native demo: a minimal React Native 0.88 app on `@hotcodepush/react-native-code-push`, the app that receives every update, the SDK's device test and the docs' screenshots.
 Stack: TypeScript and React Native on the New Architecture with Hermes; the iOS project on CocoaPods, the Android project on Gradle.
 
 The plan is the private `handbook` repo, checked out beside this one: `../handbook/docs/`.
@@ -31,7 +31,7 @@ The native builds: `pod install` in `ios/`, then `xcodebuild -workspace ios/HotC
 
 Everything `npx hotcodepush init` adds to a React Native project is committed here as it adds it:
 
-- `ios/HotCodePushDemo/AppDelegate.swift` returns `HotCodePush.bundleURL()` in release builds, and `android/.../MainApplication.kt` imports the SDK's `getDefaultReactHost`: React Native runs the bundle the SDK serves.
+- `ios/HotCodePushDemo/SceneDelegate.swift` returns `HotCodePush.bundleURL()` in release builds, and `android/.../MainApplication.kt` imports the SDK's `getDefaultReactHost`: React Native runs the bundle the SDK serves.
 - The Xcode phase "Create HotCodePush binary", after "Bundle React Native code and images", and the `apply from` line at the end of `android/app/build.gradle` run the CLI's build step on what the build bundled: `binary create` in an Xcode archive or a Gradle build type other than `debug`, `resource-file write` in every other build.
 
 Both commands write `hotcodepush.json` into the app — the project's file plus `builtAt`, `fingerprint`, `embeddedBundleManifest` and `embeddedBundleId`; only `binary create` creates the store build's binary and versions the embedded manifest, `resource-file write` leaving `bundleVersion` empty and `embeddedBundleId` null. `binary create` needs a login or `HOTCODEPUSH_TOKEN`, and without one, or with `HOTCODEPUSH_OFFLINE=1`, the build names no channel and takes no updates.
