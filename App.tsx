@@ -4,7 +4,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 
 // Change this label and release it to see the update land on the device.
-const VERSION = 'v1';
+const VERSION = 'v2';
 
 export default function App() {
   const { isSyncing, lastSync, state } = useUpdates();
