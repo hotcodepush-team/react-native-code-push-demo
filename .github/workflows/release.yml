@@ -39,7 +39,8 @@ jobs:
       # The downloads carry v1 and main a later label, so the first sync of a download shows a new one.
       - run: sed -i "s/const VERSION = '[^']*'/const VERSION = 'v1'/" App.tsx
       # Each run is its own store build, so the build number is the run number and a changed bundle never lands under an existing build.
-      - run: ./gradlew assembleRelease --console=plain -Pandroid.injected.version.code="$GITHUB_RUN_NUMBER"
+      - run: sed -i "s/versionCode [0-9]*$/versionCode $GITHUB_RUN_NUMBER/" android/app/build.gradle
+      - run: ./gradlew assembleRelease --console=plain
         working-directory: android
       - run: mv android/app/build/outputs/apk/release/app-release.apk hotcodepush-demo-react-native-android.apk
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
