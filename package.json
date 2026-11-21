@@ -28,7 +28,7 @@
     "@react-native/metro-config": "0.88.1",
     "@react-native/typescript-config": "0.88.1",
     "@types/react": "19.3.0",
-    "hotcodepush": "0.3.0",
+    "hotcodepush": "0.4.1",
     "prettier": "3.9.8",
     "typescript": "6.0.3"
   },
